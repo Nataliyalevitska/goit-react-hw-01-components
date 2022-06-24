@@ -1,9 +1,9 @@
-import React from 'react';
 import s from './Profile.module.css';
-// import user from './user.json';
+import PropTypes from 'prop-types';
 
-const Profile = ({ user }) => {
-  const { avatar, username, tag, location, stats } = user;
+
+const Profile = ({ user}) => {
+  const { avatar, username, tag, location,stats:{followers,views,likes} } = user;
   return (
     <div className={s.Profilewrap}>
       <div className={s.description}>
@@ -16,19 +16,22 @@ const Profile = ({ user }) => {
       <ul className={s.stats}>
         <li className={s.Profileitem}>
           <span className={(s.label, s.colorTitle)}>Followers</span>
-          <span className="quantity"> {stats.followers}</span>
+          <span className="quantity"> {followers}</span>
         </li>
         <li className={s.Profileitem}>
           <span className={(s.label, s.colorTitle)}>Views</span>
-          <span className="quantity"> {stats.views}</span>
+          <span className="quantity"> {views}</span>
         </li>
         <li className={s.Profileitem}>
           <span className={(s.label, s.colorTitle)}>Likes</span>
-          <span className="quantity"> {stats.likes}</span>
+          <span className="quantity"> {likes}</span>
         </li>
       </ul>
     </div>
   );
+};
+Profile.propTypes = {
+user: PropTypes.object.isRequired
 };
 
 export default Profile;

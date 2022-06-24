@@ -1,4 +1,3 @@
-import React from 'react';
 import './FriendList.css';
 import PropTypes from 'prop-types';
 
@@ -20,7 +19,7 @@ const FriendList = ({ friends }) => {
 };
 
 FriendList.propTypes = {
-  name: PropTypes.string,
+  friends: PropTypes.array.isRequired
 };
 
 export default FriendList;
