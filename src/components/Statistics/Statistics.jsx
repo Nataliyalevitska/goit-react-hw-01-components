@@ -1,4 +1,4 @@
-import './Statistics.css';
+import './Statistics.module.css';
 import colorSt from '../../services/color.js';
 import PropTypes from "prop-types";
 
