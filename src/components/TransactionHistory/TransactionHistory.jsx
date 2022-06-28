@@ -1,31 +1,25 @@
-import './TransactionHistory.module.css';
-import PropTypes from "prop-types";
+import { PropTypes } from 'prop-types';
+import styles from './TransactionHistory.module.css';
 
-const TransactionHistory = ({ items }) => {
+export const TransactionHistory = ({ items }) => {
   return (
     <div>
-      <table className="transaction-history">
+      <table className={styles['transaction-history']}>
         <thead>
-          <tr className="top-sheet">
-            <th className="sheet-item">Type</th>
-            <th className="sheet-item">Amount</th>
-            <th className="sheet-item">Currency</th>
+          <tr className={styles['top-sheet']}>
+            <th className={styles['sheet-item']}>Type</th>
+            <th className={styles['sheet-item']}>Amount</th>
+            <th className={styles['sheet-item']}>Currency</th>
           </tr>
         </thead>
         <tbody>
           {items.map(item => (
-            <tr key={item.id} className="Transaction-item">
-              <td className="sheet-data">{item.type}</td>
-              <td className="sheet-data">{item.amount}</td>
-              <td className="sheet-data">{item.currency}</td>
+            <tr key={item.id} className={styles['Transaction-item']}>
+              <td className={styles['sheet-data']}>{item.type}</td>
+              <td className={styles['sheet-data']}>{item.amount}</td>
+              <td className={styles['sheet-data']}>{item.currency}</td>
             </tr>
           ))}
-
-          {/* <tr>
-            <td>Withdrawal</td>
-            <td>85</td>
-            <td>USD</td>
-          </tr> */}
         </tbody>
       </table>
     </div>
@@ -33,7 +27,12 @@ const TransactionHistory = ({ items }) => {
 };
 
 TransactionHistory.propTypes = {
-  items: PropTypes.array.isRequired
+  items: PropTypes.arrayOf(
+    PropTypes.shape({
+      id: PropTypes.string.isRequired,
+      type: PropTypes.string.isRequired,
+      amount: PropTypes.string.isRequired,
+      currency: PropTypes.string.isRequired,
+    }),
+  ),
 };
-
-export default TransactionHistory;
